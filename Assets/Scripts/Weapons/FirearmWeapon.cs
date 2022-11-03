@@ -10,6 +10,9 @@ public class FirearmWeapon : WeaponBase
     [SerializeField]
     private bool isCurrent;
     [SerializeField]
+    private Transform muzzle;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -29,6 +32,17 @@ public class FirearmWeapon : WeaponBase
         if (isCurrent)
         {
             
+        }
+        if (difference.x < 0) transform.localScale = new Vector3(-1, -1, 0);
+        else transform.localScale = new Vector3(1, 1, 0);
+        if (Input.GetMouseButtonDown(1))
+        {
+            Debug.Log("S");
+            Vector3 directionVector = Input.mousePosition - muzzle.position;
+            Vector3.Normalize(directionVector);
+            projectilePrefab.GetComponent<SimpleBullet>().Direction = directionVector;
+            Instantiate(projectilePrefab, muzzle.position, Quaternion.identity);
+
         }
     }
 }

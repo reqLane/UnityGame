@@ -169,8 +169,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 0
-  projectilePrefab: {fileID: 0}
+  projectilePrefab: {fileID: 3313771074988174925, guid: 6bbf5f6d686b1854c862bb03cddd8fff, type: 3}
   isCurrent: 0
+  muzzle: {fileID: 1937025290}
 --- !u!1 &235199266
 GameObject:
   m_ObjectHideFlags: 0
