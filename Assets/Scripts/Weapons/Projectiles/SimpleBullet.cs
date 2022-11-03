@@ -7,19 +7,20 @@ public class SimpleBullet : ProjectileBase
     Vector3 direction;
     [SerializeField]
     float speed;
-    BoxCollider bcollider;
+    BoxCollider2D bcollider;
 
-    public Vector3 Direction { get => direction; set => direction = value; }
+    public Vector2 Direction { get => direction; set => direction = value; }
 
     // Start is called before the first frame update
     void Start()
     {
-        bcollider = GetComponent<BoxCollider>();
+        bcollider = GetComponent<BoxCollider2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
+        //transform.position += direction*speed;
         transform.position += direction*speed;
     }
 }

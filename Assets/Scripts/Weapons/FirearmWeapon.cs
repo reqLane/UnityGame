@@ -35,14 +35,13 @@ public class FirearmWeapon : WeaponBase
         }
         if (difference.x < 0) transform.localScale = new Vector3(-1, -1, 0);
         else transform.localScale = new Vector3(1, 1, 0);
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log("S");
-            Vector3 directionVector = Input.mousePosition - muzzle.position;
-            Vector3.Normalize(directionVector);
-            projectilePrefab.GetComponent<SimpleBullet>().Direction = directionVector;
-            Instantiate(projectilePrefab, muzzle.position, Quaternion.identity);
-
+            Vector2 directionVector = Camera.main.ScreenToWorldPoint(Input.mousePosition) - muzzle.position;
+            directionVector = Vector3.Normalize(directionVector);
+            GameObject i = Instantiate(projectilePrefab, muzzle.position, Quaternion.identity);
+            i.GetComponent<SimpleBullet>().Direction = directionVector;
+            Debug.Log(directionVector);
         }
     }
 }
