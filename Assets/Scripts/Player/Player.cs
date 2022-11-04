@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-
     private Rigidbody2D rb;
     public float speed;
     public float jumpForce;
@@ -22,8 +21,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rb = GetComponent<Rigidbody2D>(); 
-   
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
@@ -35,6 +33,13 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
+        if(Camera.main.ScreenToWorldPoint(Input.mousePosition).x < transform.position.x) {
+            transform.localScale = new Vector3(-1, 1, 0);
+        }
+        else
+        {
+            transform.localScale = new Vector3(1, 1, 0);
+        }
         isGrounded = Physics2D.OverlapCircle(feetPos.position, checkRadius, whatIsGround);
 
         if (isGrounded && Input.GetKeyDown(KeyCode.Space)){

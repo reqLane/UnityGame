@@ -5,6 +5,8 @@ using UnityEngine;
 public class WeaponBase : MonoBehaviour
 {
     public int damage;
+    private void Start()
+    {
 
-    
+    }
 }
