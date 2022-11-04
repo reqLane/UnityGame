@@ -15,6 +15,13 @@ public class SimpleBullet : ProjectileBase
     void Start()
     {
         bcollider = GetComponent<BoxCollider2D>();
+        Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), GameManager.instance.player.GetComponent<Collider2D>());
+        GameObject[] bullets = GameObject.FindGameObjectsWithTag("Bullet");
+        foreach (GameObject bullet in bullets)
+        {
+            Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), bullet.GetComponent<Collider2D>());
+        }
+        StartCoroutine(WaitAndDestroy(10));
     }
 
     // Update is called once per frame
@@ -23,4 +30,20 @@ public class SimpleBullet : ProjectileBase
         //transform.position += direction*speed;
         transform.position += direction*speed;
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Destroy(collision.gameObject);
+        }
+        Destroy(this.gameObject);
+    }
+
+    private IEnumerator WaitAndDestroy(int time)
+    {
+        yield return new WaitForSeconds(time);
+        Destroy(this.gameObject);
+    }
+
 }
