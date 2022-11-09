@@ -13,9 +13,9 @@ GameObject:
   - component: {fileID: 881005859331616617}
   - component: {fileID: 8097657424465906948}
   - component: {fileID: -4005884662286742933}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Enemy_crab
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,6 +99,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 827a769bd9dd0184c8a5446b81011dfb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyStats:
+    maxHp: 10
+    currentHp: 10
+    speed: 10
+    damage: 10
 --- !u!61 &8097657424465906948
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -187,9 +187,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_crab
       objectReference: {fileID: 0}
+    - target: {fileID: 2156173876068083358, guid: c9d906b9e36ca6640926350f29386305, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
     - target: {fileID: 6947363719318082512, guid: c9d906b9e36ca6640926350f29386305, type: 3}
       propertyPath: m_RootOrder
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6947363719318082512, guid: c9d906b9e36ca6640926350f29386305, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6947363719318082512, guid: c9d906b9e36ca6640926350f29386305, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6947363719318082512, guid: c9d906b9e36ca6640926350f29386305, type: 3}
       propertyPath: m_LocalPosition.x
@@ -248,8 +260,8 @@ GameObject:
   - component: {fileID: 235199269}
   - component: {fileID: 235199268}
   - component: {fileID: 235199267}
-  - component: {fileID: 235199270}
   - component: {fileID: 235199271}
+  - component: {fileID: 235199272}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -347,32 +359,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &235199270
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 235199266}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 6200000, guid: 52d4670282e56a643883651a9aacc0b7, type: 2}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.27, y: 3.21}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.6, y: 2.4}
-  m_EdgeRadius: 0
 --- !u!114 &235199271
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -393,6 +379,22 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   jumpTime: 0.3
+--- !u!70 &235199272
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 235199266}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 6200000, guid: 8b058d1ad49ff6345bbc950859819604, type: 2}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.1772461, y: 0.10761356}
+  m_Size: {x: 1.231844, y: 2.6149592}
+  m_Direction: 0
 --- !u!1 &744037351 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2156173876068083358, guid: c9d906b9e36ca6640926350f29386305, type: 3}
@@ -3804,6 +3806,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2878112381250066844, guid: e774504b46578a24f8d50cc46ff428dc, type: 3}
+      propertyPath: enemyStats.maxHp
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 2878112381250066844, guid: e774504b46578a24f8d50cc46ff428dc, type: 3}
+      propertyPath: enemyStats.speed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2878112381250066844, guid: e774504b46578a24f8d50cc46ff428dc, type: 3}
+      propertyPath: enemyStats.damage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2878112381250066844, guid: e774504b46578a24f8d50cc46ff428dc, type: 3}
+      propertyPath: enemyStats.currentHp
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8510643360693964872, guid: e774504b46578a24f8d50cc46ff428dc, type: 3}
       propertyPath: m_RootOrder
       value: 1

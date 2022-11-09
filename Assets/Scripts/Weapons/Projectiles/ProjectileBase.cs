@@ -4,4 +4,5 @@ using UnityEngine;
 
 public class ProjectileBase : MonoBehaviour
 {
+    public int damage;
 }

@@ -35,7 +35,7 @@ public class SimpleBullet : ProjectileBase
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            Destroy(collision.gameObject);
+            collision.gameObject.GetComponent<EnemyBase>().getDamage(this.damage);
         }
         Destroy(this.gameObject);
     }
