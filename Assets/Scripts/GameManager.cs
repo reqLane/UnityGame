@@ -16,6 +16,7 @@ public class GameManager : MonoBehaviour
         }
         instance = this;
         DontDestroyOnLoad(this);
+        setUndestroyableObjects();
     }
     void Start()
     {
@@ -26,5 +27,11 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void setUndestroyableObjects()
+    {
+        DontDestroyOnLoad(player);
+        DontDestroyOnLoad(mainCamera);
     }
 }
