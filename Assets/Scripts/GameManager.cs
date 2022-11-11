@@ -16,22 +16,5 @@ public class GameManager : MonoBehaviour
         }
         instance = this;
         DontDestroyOnLoad(this);
-        setUndestroyableObjects();
-    }
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
-    void setUndestroyableObjects()
-    {
-        DontDestroyOnLoad(player);
-        DontDestroyOnLoad(mainCamera);
     }
 }

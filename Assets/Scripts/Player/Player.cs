@@ -5,23 +5,34 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     private Rigidbody2D rb;
-    public float speed;
-    public float jumpForce;
+
+    [SerializeField]
+    private PlayerStatsSO statsSO;
+    private float hp;
+    private float speed;
+    private float jumpForce;
+
     private float moveInput;
 
-    private bool isGrounded;
-    public Transform feetPos;
-    public float checkRadius;
-    public LayerMask whatIsGround;
-
+    [SerializeField]
+    private float jumpTime;
     private float jumpTimeCounter;
-    public float jumpTime;
     private bool isJumping;
 
-    // Start is called before the first frame update
+    private bool isGrounded;
+    [SerializeField]
+    private Transform feetPos;
+    [SerializeField] 
+    private float checkRadius;
+    [SerializeField]
+    private LayerMask whatIsGround;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        hp = statsSO.HP;
+        speed = statsSO.Speed;
+        jumpForce = statsSO.JumpForce;
     }
 
     // Update is called once per frame
