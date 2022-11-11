@@ -8,9 +8,6 @@ public class Player : MonoBehaviour
 
     [SerializeField]
     private PlayerStatsSO statsSO;
-    private float hp;
-    private float speed;
-    private float jumpForce;
 
     private float moveInput;
 
@@ -30,16 +27,14 @@ public class Player : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        hp = statsSO.HP;
-        speed = statsSO.Speed;
-        jumpForce = statsSO.JumpForce;
+
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
         moveInput = Input.GetAxisRaw("Horizontal");
-        rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
+        rb.velocity = new Vector2(moveInput * statsSO.Speed, rb.velocity.y);
     }
 
     private void Update()
@@ -56,14 +51,14 @@ public class Player : MonoBehaviour
         if (isGrounded && Input.GetKeyDown(KeyCode.Space)){
             isJumping = true;
             jumpTimeCounter = jumpTime;
-            rb.velocity = Vector2.up * jumpForce;
+            rb.velocity = Vector2.up * statsSO.JumpForce;
         }
 
         if (Input.GetKey(KeyCode.Space) && isJumping)
         {
             if (jumpTimeCounter > 0)
             {
-                rb.velocity = Vector2.up * jumpForce;
+                rb.velocity = Vector2.up * statsSO.JumpForce;
                 jumpTimeCounter -= Time.deltaTime;
             }
             else

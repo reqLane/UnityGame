@@ -15,7 +15,7 @@ public class SimpleBullet : ProjectileBase
     void Start()
     {
         bcollider = GetComponent<Collider2D>();
-        Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), GameManager.instance.player.GetComponent<Collider2D>());
+        Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), GameManager.Instance.player.GetComponent<Collider2D>());
         GameObject[] bullets = GameObject.FindGameObjectsWithTag("Bullet");
         foreach (GameObject bullet in bullets)
         {
