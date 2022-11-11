@@ -26,9 +26,7 @@ public class CrabEnemy : GroundEnemy
         helpFrontPoint2.y = helpFrontPoint1.y + enemyStats.collider.bounds.size.y * 0.95f;
         enemyStats.feetPos.x = enemyStats.collider.transform.position.x;
         enemyStats.feetPos.y = enemyStats.collider.transform.position.y - enemyStats.collider.bounds.size.y / 2;
-        if (Physics2D.OverlapCircle(enemyStats.feetPos, 0.01f, LayerMask.GetMask("Collidable")) != null)
-        {
-            if(Physics2D.OverlapCircle(helpFeetPoint, 0.04f, LayerMask.GetMask("Collidable")) == null||(Physics2D.OverlapArea(helpFrontPoint1, helpFrontPoint2, LayerMask.GetMask("Collidable")) !=null))
+            if((Physics2D.OverlapCircle(helpFeetPoint, 0.04f, LayerMask.GetMask("Collidable")) == null||(Physics2D.OverlapArea(helpFrontPoint1, helpFrontPoint2, LayerMask.GetMask("Collidable")) !=null)) && Physics2D.OverlapCircle(enemyStats.feetPos, 0.01f, LayerMask.GetMask("Collidable")) != null)
             {
                 if (enemyStats.facesRight)
                 {
@@ -47,4 +45,3 @@ public class CrabEnemy : GroundEnemy
             }
         }
     }
-}
