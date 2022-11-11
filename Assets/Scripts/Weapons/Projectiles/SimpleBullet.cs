@@ -7,15 +7,15 @@ public class SimpleBullet : ProjectileBase
     Vector3 direction;
     [SerializeField]
     float speed;
-    BoxCollider2D bcollider;
+    Collider2D bcollider;
 
     public Vector2 Direction { get => direction; set => direction = value; }
 
     // Start is called before the first frame update
     void Start()
     {
-        bcollider = GetComponent<BoxCollider2D>();
-        Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), GameManager.instance.player.GetComponent<Collider2D>());
+        bcollider = GetComponent<Collider2D>();
+        Physics2D.IgnoreCollision(this.GetComponent<Collider2D>(), GameManager.Instance.player.GetComponent<Collider2D>());
         GameObject[] bullets = GameObject.FindGameObjectsWithTag("Bullet");
         foreach (GameObject bullet in bullets)
         {
@@ -35,7 +35,7 @@ public class SimpleBullet : ProjectileBase
     {
         if (collision.gameObject.tag == "Enemy")
         {
-            Destroy(collision.gameObject);
+            collision.gameObject.GetComponent<EnemyBase>().getDamage(this.damage);
         }
         Destroy(this.gameObject);
     }

@@ -5,30 +5,36 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     private Rigidbody2D rb;
-    public float speed;
-    public float jumpForce;
+
+    [SerializeField]
+    private PlayerStatsSO statsSO;
+
     private float moveInput;
 
-    private bool isGrounded;
-    public Transform feetPos;
-    public float checkRadius;
-    public LayerMask whatIsGround;
-
+    [SerializeField]
+    private float jumpTime;
     private float jumpTimeCounter;
-    public float jumpTime;
     private bool isJumping;
 
-    // Start is called before the first frame update
+    private bool isGrounded;
+    [SerializeField]
+    private Transform feetPos;
+    [SerializeField] 
+    private float checkRadius;
+    [SerializeField]
+    private LayerMask whatIsGround;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+
     }
 
     // Update is called once per frame
     void FixedUpdate()
     {
         moveInput = Input.GetAxisRaw("Horizontal");
-        rb.velocity = new Vector2(moveInput * speed, rb.velocity.y);
+        rb.velocity = new Vector2(moveInput * statsSO.Speed, rb.velocity.y);
     }
 
     private void Update()
@@ -45,14 +51,14 @@ public class Player : MonoBehaviour
         if (isGrounded && Input.GetKeyDown(KeyCode.Space)){
             isJumping = true;
             jumpTimeCounter = jumpTime;
-            rb.velocity = Vector2.up * jumpForce;
+            rb.velocity = Vector2.up * statsSO.JumpForce;
         }
 
         if (Input.GetKey(KeyCode.Space) && isJumping)
         {
             if (jumpTimeCounter > 0)
             {
-                rb.velocity = Vector2.up * jumpForce;
+                rb.velocity = Vector2.up * statsSO.JumpForce;
                 jumpTimeCounter -= Time.deltaTime;
             }
             else

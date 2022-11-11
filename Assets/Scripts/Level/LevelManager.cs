@@ -1,8 +1,9 @@
+using Project.Utility;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ProjectileBase : MonoBehaviour
+public class LevelManager : Singleton<LevelManager>
 {
-    public int damage;
+    
 }
