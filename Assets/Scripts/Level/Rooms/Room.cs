@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -55,12 +56,25 @@ public class Room : MonoBehaviour
         }
     }
 
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "Player" && roomIsActivated)
+        {
+            roomIsActivated = false;
+            StartCoroutine(ActivateRoom());
+        }
+
+    }
     private IEnumerator ActivateRoom()
     {
-        CloseAllDoors();
+        yield return new WaitForSeconds(0.5f);
+        if (roomIsActivated)
+        {
+            CloseAllDoors();
 
-        yield return new WaitForSeconds(2);
-        enemiesLeftCount = enemyList.Count;
+            //yield return new WaitForSeconds(2);
+            enemiesLeftCount = enemyList.Count;
+        }
         yield break;
     }
     //whole spawning system will be added soon
