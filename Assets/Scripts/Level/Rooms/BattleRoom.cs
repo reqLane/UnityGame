@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Room : MonoBehaviour
+public class BattleRoom : MonoBehaviour
 {
     private bool roomIsActivated;
     private int enemiesLeftCount;
@@ -67,7 +67,6 @@ public class Room : MonoBehaviour
     }
     private IEnumerator ActivateRoom()
     {
-        yield return new WaitForSeconds(0.5f);
         if (roomIsActivated)
         {
             CloseAllDoors();
@@ -75,6 +74,9 @@ public class Room : MonoBehaviour
             //yield return new WaitForSeconds(2);
             enemiesLeftCount = enemyList.Count;
         }
+
+        yield return new WaitForSeconds(0.5f);
+        
         yield break;
     }
     //whole spawning system will be added soon
