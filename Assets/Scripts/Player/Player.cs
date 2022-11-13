@@ -23,11 +23,11 @@ public class Player : MonoBehaviour
     private float checkRadius;
     [SerializeField]
     private LayerMask whatIsGround;
-
+    private Animator animator;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -71,5 +71,34 @@ public class Player : MonoBehaviour
         {
             isJumping = false;
         }
+        if(isGrounded)
+        {
+            if (Mathf.Abs(rb.velocity.x) < 0.1f && Mathf.Abs(rb.velocity.y) < 0.1f)
+            {
+                idleAnimation();
+            }
+            else if(!isJumping)
+            {
+                walkAnimation();
+            }
+            else
+            {
+                jumpAnimation();
+            }
+        }
+    }
+    private void jumpAnimation()
+    {
+        animator.Play("Player_Jump");
+    }
+
+    private void walkAnimation()
+    {
+        animator.Play("Player_Walk");
+    }
+
+    private void idleAnimation()
+    {
+        animator.Play("Player_Idle");
     }
 }
