@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
+
     private Player player;
 
     public Player Player { get => player; set => player = value; }

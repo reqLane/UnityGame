@@ -6,25 +6,23 @@ using UnityEngine;
 public class BattleRoom : MonoBehaviour
 {
     private bool roomIsActivated;
-    private int enemiesLeftCount;
+    private bool roomIsDone;
 
     [SerializeField]
-    private List<EnemyBase> enemyList;
+    private Wave[] waves;
 
     [SerializeField]
     private Door[] doors;
 
+    public Wave[] Waves { get => waves; set => waves = value; }
+    public bool RoomIsActivated { get => roomIsActivated; set => roomIsActivated = value; }
+    public bool RoomIsDone { get => roomIsDone; set => roomIsDone = value; }
+
     void Start()
     {
         roomIsActivated = false;
-        SpawnEnemies();
+        roomIsDone = false;
     } 
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void OpenAllDoors()
     {
@@ -42,14 +40,9 @@ public class BattleRoom : MonoBehaviour
         }
     }
 
-    public bool anyMonstersInRoom()
-    {
-        return false;
-    }
-
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag=="Player" && !roomIsActivated)
+        if (collision.tag=="Player" && !roomIsActivated && !roomIsDone)
         {
             roomIsActivated = true;
             StartCoroutine(ActivateRoom());
@@ -72,29 +65,18 @@ public class BattleRoom : MonoBehaviour
         if (roomIsActivated)
         {
             CloseAllDoors();
-
-            //yield return new WaitForSeconds(2);
-            enemiesLeftCount = enemyList.Count;
+            LevelManager.Instance.CurrentRoom = this;
+            LevelManager.Instance.StartBattle();
         }
         
         yield break;
     }
-    //whole spawning system will be added soon
-    private void SpawnEnemies()
+
+    public void DeactivateRoom()
     {
-        EnemyBase.Death += enemyKilled;
+        roomIsActivated = false;
+        roomIsDone = true;
+        OpenAllDoors();
     }
 
-    private void enemyKilled()
-    {
-        enemiesLeftCount--;
-        if (!EnemiesLeft())
-        {
-            OpenAllDoors();
-        }
-    }
-    private bool EnemiesLeft()
-    {
-        return enemiesLeftCount > 0;
-    }
 }

@@ -3,7 +3,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelManager : MonoBehaviour
+public class LevelManager : Singleton<LevelManager>
 {
-    
+    private BattleRoom currentRoom;
+
+    public BattleRoom CurrentRoom { get => currentRoom; set => currentRoom = value; }
+
+    public void StartBattle()
+    {
+        if (currentRoom != null && currentRoom.RoomIsActivated && !currentRoom.RoomIsDone)
+        {
+            EnemyManager.Instance.StartBattle();
+        }
+    }
+
+    public void EndBattle()
+    {
+        currentRoom.DeactivateRoom();
+    }
 }
