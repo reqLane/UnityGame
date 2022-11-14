@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
-    public Player player;
-    public Camera mainCamera;
+    private Player player;
 
+    public Player Player { get => player; set => player = value; }
 }

@@ -28,6 +28,8 @@ public class Player : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+
+        GameManager.Instance.Player = this;
     }
 
     // Update is called once per frame

@@ -49,7 +49,7 @@ public class BattleRoom : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag=="Player"&&!roomIsActivated)
+        if (collision.tag=="Player" && !roomIsActivated)
         {
             roomIsActivated = true;
             StartCoroutine(ActivateRoom());
@@ -61,12 +61,14 @@ public class BattleRoom : MonoBehaviour
         if (collision.tag == "Player" && roomIsActivated)
         {
             roomIsActivated = false;
-            StartCoroutine(ActivateRoom());
+            StopAllCoroutines();
         }
 
     }
     private IEnumerator ActivateRoom()
     {
+        yield return new WaitForSeconds(0.5f);
+
         if (roomIsActivated)
         {
             CloseAllDoors();
@@ -74,8 +76,6 @@ public class BattleRoom : MonoBehaviour
             //yield return new WaitForSeconds(2);
             enemiesLeftCount = enemyList.Count;
         }
-
-        yield return new WaitForSeconds(0.5f);
         
         yield break;
     }
