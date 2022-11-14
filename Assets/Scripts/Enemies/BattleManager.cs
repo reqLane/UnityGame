@@ -4,9 +4,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyManager : Singleton<EnemyManager>
+public class BattleManager : Singleton<BattleManager>
 {
-    private int waitBetweenWaves = 1;
+    private const int waitBetweenWaves = 1;
     private int currentWave = 0;
     private int numOfEnemies = 0;
     
@@ -24,12 +24,10 @@ public class EnemyManager : Singleton<EnemyManager>
 
     private void SpawnWave()
     {
-        Debug.Log("Wave: " + currentWave);
-        numOfEnemies = 0;
-        foreach(EnemyOfWave enemyOfWave in this.getCurrentWaveEnemiesList())
-        {   
+        numOfEnemies = getCurrentWaveEnemiesList().Length;
+        foreach(EnemyOfWave enemyOfWave in getCurrentWaveEnemiesList())
+        {
             Instantiate(enemyOfWave.EnemyToSpawn, enemyOfWave.SpawnPoint);
-            numOfEnemies++;
         }
     }
 
@@ -44,7 +42,6 @@ public class EnemyManager : Singleton<EnemyManager>
 
     private void OnWaveChange()
     {
-        numOfEnemies = 0;
         currentWave++;
         if (currentWave >= LevelManager.Instance.CurrentRoom.Waves.Length)
         {

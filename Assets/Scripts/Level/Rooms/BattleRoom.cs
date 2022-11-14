@@ -44,7 +44,6 @@ public class BattleRoom : MonoBehaviour
     {
         if (collision.tag=="Player" && !roomIsActivated && !roomIsDone)
         {
-            roomIsActivated = true;
             StartCoroutine(ActivateRoom());
         }
     }
@@ -56,18 +55,18 @@ public class BattleRoom : MonoBehaviour
             roomIsActivated = false;
             StopAllCoroutines();
         }
-
     }
+
     private IEnumerator ActivateRoom()
     {
+        roomIsActivated = true;
+
         yield return new WaitForSeconds(0.5f);
 
-        if (roomIsActivated)
-        {
-            CloseAllDoors();
-            LevelManager.Instance.CurrentRoom = this;
-            LevelManager.Instance.StartBattle();
-        }
+        CloseAllDoors();
+        
+        LevelManager.Instance.CurrentRoom = this;
+        LevelManager.Instance.StartBattle();
         
         yield break;
     }

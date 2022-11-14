@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class LevelManager : Singleton<LevelManager>
 {
+    //
     private BattleRoom currentRoom;
 
     public BattleRoom CurrentRoom { get => currentRoom; set => currentRoom = value; }
@@ -13,12 +14,16 @@ public class LevelManager : Singleton<LevelManager>
     {
         if (currentRoom != null && currentRoom.RoomIsActivated && !currentRoom.RoomIsDone)
         {
-            EnemyManager.Instance.StartBattle();
+            BattleManager.Instance.StartBattle();
         }
     }
 
     public void EndBattle()
     {
-        currentRoom.DeactivateRoom();
+        if (currentRoom != null)
+        {
+            currentRoom.DeactivateRoom();
+            this.currentRoom = null;
+        }
     }
 }
