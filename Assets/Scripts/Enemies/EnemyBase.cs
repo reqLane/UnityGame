@@ -12,6 +12,7 @@ public class EnemyBase : MonoBehaviour
     private void Awake()
     {
         enemyStats.currentHp = enemyStats.maxHp;
+
     }
     // Start is called before the first frame update
     void Start()
