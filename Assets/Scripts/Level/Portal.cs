@@ -26,7 +26,7 @@ public class Portal : MonoBehaviour
 
     private IEnumerator startTeleportation()
     {
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(1);
 
         SceneManager.LoadScene(sceneDestination);
     }
