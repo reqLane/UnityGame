@@ -11,6 +11,9 @@ public class SmallRocket : ProjectileBase
     Vector3 currentDirection = new Vector2(1, 0);
     Vector2 nextDirection;
     Vector2 toPlayer;
+
+    public Vector3 CurrentDirection { get => currentDirection; set => currentDirection = value; }
+
     // Start is called before the first frame update
     void Start()
     {

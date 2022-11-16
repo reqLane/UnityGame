@@ -175,3 +175,4 @@ MonoBehaviour:
     facesRight: 0
     collider: {fileID: 0}
     feetPos: {x: 0, y: 0}
+  projectilePrefab: {fileID: 5523129968872788091, guid: e24f87694e9078a4d908d6c4b168c0ce, type: 3}
