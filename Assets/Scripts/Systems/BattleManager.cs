@@ -4,7 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BattleManager : Singleton<BattleManager>
+public class BattleManager : MonoBehaviour
 {
     private const int waitBetweenWaves = 1;
     private int currentWave = 0;
@@ -16,7 +16,7 @@ public class BattleManager : Singleton<BattleManager>
         EnemyBase.Death += OnEnemyDeath;
         currentWave = 0;
         numOfEnemies = 0;
-        if (LevelManager.Instance.CurrentRoom.Waves.Length == 0)
+        if (GameManager.Instance.LevelManager.CurrentRoom.Waves.Length == 0)
             OnBattleEnd();
         else
             SpawnWave();
@@ -43,7 +43,7 @@ public class BattleManager : Singleton<BattleManager>
     private void OnWaveChange()
     {
         currentWave++;
-        if (currentWave >= LevelManager.Instance.CurrentRoom.Waves.Length)
+        if (currentWave >= GameManager.Instance.LevelManager.CurrentRoom.Waves.Length)
         {
             OnBattleEnd();
         }
@@ -56,12 +56,12 @@ public class BattleManager : Singleton<BattleManager>
     private void OnBattleEnd()
     {
         EnemyBase.Death -= OnEnemyDeath;
-        LevelManager.Instance.EndBattle();
+        GameManager.Instance.LevelManager.EndBattle();
     }
 
     public EnemyOfWave[] getCurrentWaveEnemiesList()
     {
-        return LevelManager.Instance.CurrentRoom.Waves[currentWave].EnemiesOfWave;
+        return GameManager.Instance.LevelManager.CurrentRoom.Waves[currentWave].EnemiesOfWave;
     }
 
     private IEnumerator StartNextWaveWithDelay()

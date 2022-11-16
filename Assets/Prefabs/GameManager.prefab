@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3389097075598703951}
   - component: {fileID: 2741242189393491947}
   m_Layer: 0
-  m_Name: EnemyManager
+  m_Name: BattleManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -90,6 +90,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02db23e2cc331ea4eae08dc0ddcd0888, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  levelManager: {fileID: 6872443033101790820}
+  battleManager: {fileID: 2741242189393491947}
 --- !u!1 &6872443033101790826
 GameObject:
   m_ObjectHideFlags: 0

@@ -64,9 +64,9 @@ public class BattleRoom : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         CloseAllDoors();
-        
-        LevelManager.Instance.CurrentRoom = this;
-        LevelManager.Instance.StartBattle();
+
+        GameManager.Instance.LevelManager.CurrentRoom = this;
+        GameManager.Instance.LevelManager.StartBattle();
         
         yield break;
     }
