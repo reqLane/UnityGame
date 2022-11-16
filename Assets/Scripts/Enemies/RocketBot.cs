@@ -59,7 +59,7 @@ public class RocketBot : CrabEnemy
         shootAnimation();
         GameObject rocket = Instantiate(projectilePrefab, new Vector3(transform.position.x, transform.position.y + enemyStats.collider.bounds.size.y), Quaternion.identity);
         rocket.GetComponent<SmallRocket>().CurrentDirection = new Vector3(0, 1);
-        yield return new WaitForSeconds(0.75f);
+        yield return new WaitForSeconds(1);
         onReload = false;
         if (enemyStats.facesRight) walkRightAnimation();
         else walkLeftAnimation();
