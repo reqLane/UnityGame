@@ -24,14 +24,13 @@ public class SmallRocket : ProjectileBase
         //transform.rotation = Quaternion.Euler(Vector3.forward * degrees);
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
         toPlayer = player.transform.position - transform.position;
-        nextDirection = (Quaternion.AngleAxis(Vector3.SignedAngle(currentDirection, toPlayer, Vector3.forward) * Time.deltaTime*5, Vector3.forward) * currentDirection).normalized;
+        nextDirection = (Quaternion.AngleAxis(Vector3.SignedAngle(currentDirection, toPlayer, Vector3.forward) * Time.deltaTime * 5, Vector3.forward) * currentDirection).normalized;
         transform.Rotate(0, 0, Vector3.SignedAngle(currentDirection, nextDirection, Vector3.forward));
         currentDirection = nextDirection;
-        transform.position += currentDirection * speed*Time.deltaTime;
+        transform.position += currentDirection * speed * Time.deltaTime;
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {

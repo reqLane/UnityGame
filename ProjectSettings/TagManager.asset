@@ -18,11 +18,11 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Monster
   - Collidable
   - Entities
   - Triggers
-  - 
+  - Player
   - 
   - 
   - 
