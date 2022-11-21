@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5796495737558948079}
   - component: {fileID: 5796495737558948078}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60,7 +60,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5796495737683613136}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: Muzzle_pos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,7 +92,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5796495737985977945}
   - component: {fileID: 5796495737985977944}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: WeaponSprite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -175,7 +175,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5796495738805307251}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: FeetPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -211,7 +211,7 @@ GameObject:
   - component: {fileID: 5796495738096259372}
   - component: {fileID: 5796495739174814162}
   - component: {fileID: 5796495739174814163}
-  m_Layer: 10
+  m_Layer: 12
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -893,6 +893,10 @@ PrefabInstance:
     - target: {fileID: 507042789538831343, guid: fd0f994deb570594da90dd0f9f9cfa4d, type: 3}
       propertyPath: m_Name
       value: TorchLight
+      objectReference: {fileID: 0}
+    - target: {fileID: 507042789538831343, guid: fd0f994deb570594da90dd0f9f9cfa4d, type: 3}
+      propertyPath: m_Layer
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 587731963653112011, guid: fd0f994deb570594da90dd0f9f9cfa4d, type: 3}
       propertyPath: m_RootOrder
