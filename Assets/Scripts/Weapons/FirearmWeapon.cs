@@ -52,9 +52,9 @@ public class FirearmWeapon : WeaponBase
                 isShooting = false;
             }
         }
-        if (!isCurrent)
+        if (!isCurrent && Vector2.Distance(player.transform.position, transform.position) < 3)
         {
-            if (Input.GetKeyDown(KeyCode.E) && Vector2.Distance(player.transform.position, transform.position) < 3 && player.canChangeWeapon)
+            if ((Input.GetKeyDown(KeyCode.E) && player.canChangeWeapon) || player.weapon == null)
             {
                 if (player.weapon != null)
                 {
