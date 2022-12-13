@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 
 public class Player : MonoBehaviour
@@ -24,12 +25,15 @@ public class Player : MonoBehaviour
     [SerializeField]
     private LayerMask whatIsGround;
     private Animator animator;
+    [SerializeField]
+    public GameObject weapon;
+    public bool canChangeWeapon;
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        animator = GetComponent<Animator>();
-
+        animator = GetComponent<Animator>(); 
         GameManager.Instance.Player = this;
+        canChangeWeapon = true;
     }
 
     // Update is called once per frame
@@ -102,5 +106,13 @@ public class Player : MonoBehaviour
     private void idleAnimation()
     {
         animator.Play("Player_Idle");
+    }
+
+    public IEnumerator waitForChangeWeapon()
+    {
+        canChangeWeapon = false;
+        yield return new WaitForSeconds(0.5f);
+        canChangeWeapon = true;
+        yield break;
     }
 }

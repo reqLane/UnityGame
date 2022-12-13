@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class WeaponBase : MonoBehaviour
 {
+    [SerializeField]
+    public bool isCurrent;
     public int damage;
     private void Start()
     {

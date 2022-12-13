@@ -1,18 +1,15 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
-public class FirearmWeapon : WeaponBase
+public class ShortGunWeapon : WeaponBase
 {
     [SerializeField]
     private GameObject projectilePrefab;
     [SerializeField]
     private Transform muzzle;
     protected bool onReload = false;
-    protected bool isShooting = false;
-    protected float reloadTime = 0.2f;
+    protected float reloadTime = 1;
+    protected int amountOfBullets = 4;
     // Start is called before the first frame update
     Player player;
     private Animator animator;
@@ -21,7 +18,7 @@ public class FirearmWeapon : WeaponBase
         isCurrent = false;
         player = FindObjectOfType<Player>();
         animator = GetComponent<Animator>();
-    }
+}
 
     // Update is called once per frame
     void Update()
@@ -37,24 +34,24 @@ public class FirearmWeapon : WeaponBase
             transform.rotation = Quaternion.Euler(0f, 0f, rotationZ);
             if (difference.x < 0) transform.localScale = new Vector3(-1, -1, 0);
             else transform.localScale = new Vector3(1, 1, 0);
-            if (!onReload && Input.GetMouseButton(0))
+            if (!onReload&&Input.GetMouseButtonDown(0))
             {
-                if (!isShooting) animator.Play("FirearmWeaponAnim");
-                isShooting = true;
+                animator.Play("ShortGunAnimation");
                 Vector2 directionVector = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
+                Vector2 setDirection;
                 directionVector = Vector3.Normalize(directionVector);
-                GameObject i = Instantiate(projectilePrefab, muzzle.position, Quaternion.identity);
-                i.GetComponent<SimpleBullet>().Direction = directionVector;
+                for (int j = 0; j < amountOfBullets; j++)
+                {
+                    setDirection = (Quaternion.AngleAxis(Random.Range(-10f, 10f), Vector3.forward) * directionVector).normalized;
+                    GameObject i = Instantiate(projectilePrefab, muzzle.position, Quaternion.identity);
+                    i.GetComponent<SimpleBullet>().Direction = setDirection;
+                }
                 StartCoroutine(reloadWait());
-            }
-            else if(isShooting&&!onReload){
-                animator.Play("FirearmWeaponIdle");
-                isShooting = false;
             }
         }
         if (!isCurrent)
         {
-            if (Input.GetKeyDown(KeyCode.E) && Vector2.Distance(player.transform.position, transform.position) < 3 && player.canChangeWeapon)
+            if(Input.GetKeyDown(KeyCode.E)&&Vector2.Distance(player.transform.position, transform.position) < 3 && player.canChangeWeapon)
             {
                 if (player.weapon != null)
                 {
@@ -73,6 +70,7 @@ public class FirearmWeapon : WeaponBase
     {
         onReload = true;
         yield return new WaitForSeconds(reloadTime);
+        animator.Play("ShortGunIdle");
         onReload = false;
         yield break;
     }
