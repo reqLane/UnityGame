@@ -16,6 +16,7 @@ public class RocketBot : CrabEnemy
     [SerializeField]
     private GameObject projectilePrefab;
     Player player;
+    float shootingDistance = 10;
     void Start()
     {
         player = FindObjectOfType<Player>();
@@ -39,7 +40,7 @@ public class RocketBot : CrabEnemy
             helpShootPoint3.y = transform.position.y + (enemyStats.collider.bounds.size.y*2);
             if (Physics2D.OverlapArea(helpShootPoint1, helpShootPoint2, LayerMask.GetMask("Collidable")) == null
             && rb.velocity.y == 0
-            && Physics2D.Raycast(helpShootPoint3, player.transform.position - helpShootPoint3, 20, LayerMask.GetMask("Player")))
+            && Physics2D.Raycast(helpShootPoint3, player.transform.position - helpShootPoint3, shootingDistance, LayerMask.GetMask("Player")))
             {
                  StartCoroutine(shootRocket());
             }
