@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class SimpleBullet : ProjectileBase
 {
-    Vector3 direction;
+    protected Vector3 direction;
     [SerializeField]
-    private float speed;
-    private Collider2D boxCollider;
+    protected float speed;
+    protected Collider2D boxCollider;
 
     public Vector2 Direction { get => direction; set => direction = value; }
 
@@ -25,13 +25,13 @@ public class SimpleBullet : ProjectileBase
     }
 
     // Update is called once per frame
-    void Update()
+    protected void Update()
     {
         //transform.position += direction*speed;
         transform.position += direction*speed;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    protected private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Enemy")
         {
@@ -40,7 +40,7 @@ public class SimpleBullet : ProjectileBase
         Destroy(this.gameObject);
     }
 
-    private IEnumerator WaitAndDestroy(int time)
+    protected private IEnumerator WaitAndDestroy(int time)
     {
         yield return new WaitForSeconds(time);
         Destroy(this.gameObject);

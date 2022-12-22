@@ -8,7 +8,7 @@ public class TorchLightScript : MonoBehaviour
     {
         Light2D globalLight = GameObject.FindGameObjectWithTag("GlobalLight").GetComponent<Light2D>();
         Light2D torchLight = GetComponent<Light2D>();
-        torchLight.intensity = globalLight.intensity <= 0.75 ? 2 : 0;
+        torchLight.intensity = globalLight.intensity <= 0.75 ? 1 : 0;
     }
 
     // Update is called once per frame

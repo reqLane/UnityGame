@@ -9,6 +9,8 @@ public class EnemyBase : MonoBehaviour
 
     public delegate void OnDeathEvent();
     public static event OnDeathEvent Death;
+    private bool isDead = false;
+
     private void Awake()
     {
         enemyStats.currentHp = enemyStats.maxHp;
@@ -28,9 +30,11 @@ public class EnemyBase : MonoBehaviour
 
     public void getDamage(int amountOfDamage)
     {
+        if (isDead) return;
         enemyStats.currentHp -= amountOfDamage;
         if(enemyStats.currentHp <= 0)
         {
+            isDead = true;
             die();
         }
     }
