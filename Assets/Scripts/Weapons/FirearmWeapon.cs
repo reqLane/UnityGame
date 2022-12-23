@@ -13,8 +13,6 @@ public class FirearmWeapon : WeaponBase
     protected bool onReload = false;
     protected bool isShooting = false;
     protected float reloadTime = 0.2f;
-    // Start is called before the first frame update
-    Player player;
     private Animator animator;
     void Start()
     {
@@ -52,23 +50,9 @@ public class FirearmWeapon : WeaponBase
                 isShooting = false;
             }
         }
-        if (!isCurrent && Vector2.Distance(player.transform.position, transform.position) < 3)
-        {
-            if ((Input.GetKeyDown(KeyCode.E) && player.canChangeWeapon) || player.weapon == null)
-            {
-                if (player.weapon != null)
-                {
-                    player.weapon.GetComponent<WeaponBase>().isCurrent = false;
-                    player.weapon.transform.parent = player.transform.parent.parent;
-                }
-                player.weapon = gameObject;
-                player.weapon.transform.parent = player.transform;
-                player.weapon.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
-                isCurrent = true;
-                StartCoroutine(player.waitForChangeWeapon());
-            }
-        }
+        takeWeapon();
     }
+
     private IEnumerator reloadWait()
     {
         onReload = true;

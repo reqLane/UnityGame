@@ -14737,6 +14737,10 @@ PrefabInstance:
       propertyPath: m_ColliderPaths.Array.data[0].m_ColliderPaths.Array.data[1].Array.data[110].Y
       value: -153599884
       objectReference: {fileID: 0}
+    - target: {fileID: 6354520910525567391, guid: 8f8e5facb0f1a554194a55deafd1c5a0, type: 3}
+      propertyPath: m_Intensity
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8581863680734735980, guid: 8f8e5facb0f1a554194a55deafd1c5a0, type: 3}
       propertyPath: m_Tiles.Array.size
       value: 1622
