@@ -102,6 +102,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isCurrent: 0
   damage: 3
+  prefab: {fileID: 1417422361205402188}
   projectilePrefab: {fileID: 3313771074988174925, guid: c76c5d299acac944f87594ead7c59be0, type: 3}
   muzzle: {fileID: 5171955744159991562}
 --- !u!95 &7546542148247215569
@@ -162,10 +163,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4628928970519766243}
     m_Modifications:
-    - target: {fileID: -5400496300255486977, guid: fd0f994deb570594da90dd0f9f9cfa4d, type: 3}
-      propertyPath: m_Intensity
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: -5400496300255486977, guid: fd0f994deb570594da90dd0f9f9cfa4d, type: 3}
       propertyPath: m_Vertices.Array.size
       value: 95

@@ -7,6 +7,7 @@ public class BattleRoom : MonoBehaviour
 {
     private bool roomIsActivated;
     private bool roomIsDone;
+    private bool wavesStarted;
 
     [SerializeField]
     private Wave[] waves;
@@ -30,6 +31,7 @@ public class BattleRoom : MonoBehaviour
         {
             door.openDoor();
         }
+        GameManager.Instance.AudioManager.Play("DoorSound");
     }
 
     public void CloseAllDoors()
@@ -38,6 +40,7 @@ public class BattleRoom : MonoBehaviour
         {
             door.closeDoor();
         }
+        GameManager.Instance.AudioManager.Play("DoorSound");
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -50,7 +53,7 @@ public class BattleRoom : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag == "Player" && roomIsActivated)
+        if (collision.tag == "Player" && roomIsActivated && !wavesStarted)
         {
             roomIsActivated = false;
             StopAllCoroutines();
@@ -64,9 +67,11 @@ public class BattleRoom : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         CloseAllDoors();
+        wavesStarted = true;
 
         GameManager.Instance.LevelManager.CurrentRoom = this;
         GameManager.Instance.LevelManager.StartBattle();
+        GameManager.Instance.AudioManager.Play("Fighting");
         
         yield break;
     }
@@ -76,6 +81,8 @@ public class BattleRoom : MonoBehaviour
         roomIsActivated = false;
         roomIsDone = true;
         OpenAllDoors();
+
+        GameManager.Instance.AudioManager.Stop("Fighting");
     }
 
 }

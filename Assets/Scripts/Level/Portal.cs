@@ -8,6 +8,11 @@ public class Portal : MonoBehaviour
     [SerializeField]
     private string sceneDestination;
 
+    private void Update()
+    {
+        transform.Rotate(0, 0, 50 * Time.deltaTime);
+    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.tag == "Player")
@@ -27,6 +32,8 @@ public class Portal : MonoBehaviour
     private IEnumerator startTeleportation()
     {
         yield return new WaitForSeconds(1);
+
+        GameManager.Instance.AudioManager.Play("Portal");
 
         SceneManager.LoadScene(sceneDestination);
     }

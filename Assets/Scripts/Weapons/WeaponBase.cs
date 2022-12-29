@@ -24,6 +24,8 @@ public class WeaponBase : MonoBehaviour
                 if (player.weapon != null)
                 {
                     player.weapon.GetComponent<WeaponBase>().isCurrent = false;
+                    player.weapon.transform.rotation = Quaternion.Euler(0f, 0f, 0f);
+                    player.weapon.transform.localScale = new Vector3(1, 1, 0);
                     player.weapon.transform.parent = player.transform.parent.parent;
                 }
                 player.weapon = gameObject;

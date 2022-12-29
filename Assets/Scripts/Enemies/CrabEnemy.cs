@@ -16,6 +16,7 @@ public class CrabEnemy : GroundEnemy
         if(!enemyStats.facesRight) transform.localScale = new Vector3(-1 * Math.Abs(transform.localScale.x), Math.Abs(transform.localScale.y), 0);
         enemyStats.collider = GetComponent<Collider2D>();
         rb = GetComponent<Rigidbody2D>();
+        damagedSound = "CrabDamaged";
     }
 
     // Update is called once per frame

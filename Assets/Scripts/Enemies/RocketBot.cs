@@ -16,7 +16,7 @@ public class RocketBot : CrabEnemy
     [SerializeField]
     private GameObject projectilePrefab;
     Player player;
-    float shootingDistance = 10;
+    float shootingDistance = 15;
     void Start()
     {
         player = FindObjectOfType<Player>();
@@ -26,6 +26,7 @@ public class RocketBot : CrabEnemy
         rb = GetComponent<Rigidbody2D>();
         if (enemyStats.facesRight) walkRightAnimation();
         else walkLeftAnimation();
+        damagedSound = "RobotDamaged";
     }
     private void Update()
     {
@@ -78,6 +79,9 @@ public class RocketBot : CrabEnemy
         shootAnimation();
         GameObject rocket = Instantiate(projectilePrefab, new Vector3(transform.position.x, transform.position.y + enemyStats.collider.bounds.size.y), Quaternion.identity);
         rocket.GetComponent<SmallRocket>().CurrentDirection = new Vector3(0, 1);
+
+        GameManager.Instance.AudioManager.Play("RocketLaunch");
+
         yield return new WaitForSeconds(1);
         onReload = false;
         enemyStats.facesRight = transform.position.x < player.transform.position.x;

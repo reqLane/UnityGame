@@ -11,10 +11,11 @@ public class EnemyBase : MonoBehaviour
     public static event OnDeathEvent Death;
     private bool isDead = false;
 
+    protected string damagedSound;
+
     private void Awake()
     {
         enemyStats.currentHp = enemyStats.maxHp;
-
     }
     // Start is called before the first frame update
     void Start()
@@ -31,8 +32,11 @@ public class EnemyBase : MonoBehaviour
     public void getDamage(int amountOfDamage)
     {
         if (isDead) return;
+
+        GameManager.Instance.AudioManager.Play(damagedSound);
+
         enemyStats.currentHp -= amountOfDamage;
-        if(enemyStats.currentHp <= 0)
+        if(enemyStats.currentHp <= 0 && !isDead)
         {
             isDead = true;
             die();

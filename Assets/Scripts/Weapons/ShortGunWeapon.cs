@@ -34,7 +34,7 @@ public class ShortGunWeapon : WeaponBase
             transform.rotation = Quaternion.Euler(0f, 0f, rotationZ);
             if (difference.x < 0) transform.localScale = new Vector3(-1, -1, 0);
             else transform.localScale = new Vector3(1, 1, 0);
-            if (!onReload&&Input.GetMouseButtonDown(0))
+            if (!onReload && Input.GetMouseButtonDown(0))
             {
                 animator.Play("ShortGunAnimation");
                 Vector2 directionVector = Camera.main.ScreenToWorldPoint(Input.mousePosition) - transform.position;
@@ -46,6 +46,9 @@ public class ShortGunWeapon : WeaponBase
                     GameObject i = Instantiate(projectilePrefab, muzzle.position, Quaternion.identity);
                     i.GetComponent<SimpleBullet>().Direction = setDirection;
                 }
+
+                GameManager.Instance.AudioManager.Play("LaserShotgun");
+
                 StartCoroutine(reloadWait());
             }
         }

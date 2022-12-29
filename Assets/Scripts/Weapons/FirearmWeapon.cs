@@ -43,6 +43,9 @@ public class FirearmWeapon : WeaponBase
                 directionVector = Vector3.Normalize(directionVector);
                 GameObject i = Instantiate(projectilePrefab, muzzle.position, Quaternion.identity);
                 i.GetComponent<SimpleBullet>().Direction = directionVector;
+
+                GameManager.Instance.AudioManager.Play("BulletShot");
+
                 StartCoroutine(reloadWait());
             }
             else if(isShooting&&!onReload){

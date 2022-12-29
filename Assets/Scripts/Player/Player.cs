@@ -17,6 +17,8 @@ public class Player : MonoBehaviour
     private float jumpTimeCounter;
     private bool isJumping;
 
+    private bool isInvincible;
+
     private bool isGrounded;
     [SerializeField]
     private Transform feetPos;
@@ -28,6 +30,9 @@ public class Player : MonoBehaviour
     [SerializeField]
     public GameObject weapon;
     public bool canChangeWeapon;
+
+    public PlayerStatsSO StatsSO { get => statsSO; set => statsSO = value; }
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -40,7 +45,7 @@ public class Player : MonoBehaviour
     void FixedUpdate()
     {
         moveInput = Input.GetAxisRaw("Horizontal");
-        rb.velocity = new Vector2(moveInput * statsSO.Speed, rb.velocity.y);
+        rb.velocity = new Vector2(moveInput * StatsSO.Speed, rb.velocity.y);
     }
 
     private void Update()
@@ -57,14 +62,14 @@ public class Player : MonoBehaviour
         if (isGrounded && Input.GetKeyDown(KeyCode.Space)){
             isJumping = true;
             jumpTimeCounter = jumpTime;
-            rb.velocity = Vector2.up * statsSO.JumpForce;
+            rb.velocity = Vector2.up * StatsSO.JumpForce;
         }
 
         if (Input.GetKey(KeyCode.Space) && isJumping)
         {
             if (jumpTimeCounter > 0)
             {
-                rb.velocity = Vector2.up * statsSO.JumpForce;
+                rb.velocity = Vector2.up * StatsSO.JumpForce;
                 jumpTimeCounter -= Time.deltaTime;
             }
             else
@@ -93,6 +98,22 @@ public class Player : MonoBehaviour
             }
         }
     }
+
+    public void getDamage(int damage)
+    {
+        if (isInvincible) return;
+
+        GameManager.Instance.AudioManager.Play("PlayerDamaged");
+
+        StartCoroutine(makeInvincible(1f));
+
+        StatsSO.HP -= damage;
+        if(StatsSO.HP <= 0)
+        {
+            Debug.Log("DEATH");
+        }
+    }
+
     private void jumpAnimation()
     {
         animator.Play("Player_Jump");
@@ -113,6 +134,13 @@ public class Player : MonoBehaviour
         canChangeWeapon = false;
         yield return new WaitForSeconds(0.5f);
         canChangeWeapon = true;
+        yield break;
+    }
+    public IEnumerator makeInvincible(float time)
+    {
+        isInvincible = true;
+        yield return new WaitForSeconds(time);
+        isInvincible = false;
         yield break;
     }
 }

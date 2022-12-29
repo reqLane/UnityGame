@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHp: 20
   hp: 20
-  speed: 15
-  jumpForce: 23
+  speed: 12
+  jumpForce: 22

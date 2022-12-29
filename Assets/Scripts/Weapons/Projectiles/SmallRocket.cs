@@ -36,8 +36,10 @@ public class SmallRocket : ProjectileBase
     {
         if (collision.gameObject.tag == "Player")
         {
-          //  collision.gameObject.GetComponent<Player>().getDamage(this.damage);
+            collision.gameObject.GetComponent<Player>().getDamage(this.damage);
         }
+
+        GameManager.Instance.AudioManager.Play("RocketExplosion");
         Destroy(this.gameObject);
     }
 }

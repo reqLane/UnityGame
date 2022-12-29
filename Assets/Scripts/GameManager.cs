@@ -9,9 +9,13 @@ public class GameManager : Singleton<GameManager>
     private LevelManager levelManager;
     [SerializeField]
     private BattleManager battleManager;
+    [SerializeField]
+    private AudioManager audioManager;
+
     private Player player;
 
     public Player Player { get => player; set => player = value; }
     public LevelManager LevelManager { get => levelManager; set => levelManager = value; }
     public BattleManager BattleManager { get => battleManager; set => battleManager = value; }
+    public AudioManager AudioManager { get => audioManager; set => audioManager = value; }
 }
