@@ -45,9 +45,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
+  - name: Theme
+    clip: {fileID: 8300000, guid: c228dd6df74be3e45801bcc8afe593a6, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 1
+    freezeTime: 0
   - name: Fighting
     clip: {fileID: 8300000, guid: bee11e46d5e279b4c970a126808e4e12, type: 3}
-    volume: 0.15
+    volume: 0.2
     pitch: 1
     loop: 1
     freezeTime: 0

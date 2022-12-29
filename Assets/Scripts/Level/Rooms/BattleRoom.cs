@@ -71,6 +71,7 @@ public class BattleRoom : MonoBehaviour
 
         GameManager.Instance.LevelManager.CurrentRoom = this;
         GameManager.Instance.LevelManager.StartBattle();
+        GameManager.Instance.AudioManager.SetVolume("Theme", .05f);
         GameManager.Instance.AudioManager.Play("Fighting");
         
         yield break;
@@ -83,6 +84,7 @@ public class BattleRoom : MonoBehaviour
         OpenAllDoors();
 
         GameManager.Instance.AudioManager.Stop("Fighting");
+        GameManager.Instance.AudioManager.SetVolume("Theme", .2f);
     }
 
 }

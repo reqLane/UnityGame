@@ -1,6 +1,7 @@
 using UnityEngine.Audio;
 using System;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class AudioManager : MonoBehaviour
 {
@@ -17,6 +18,7 @@ public class AudioManager : MonoBehaviour
             s.Source.pitch = s.Pitch;
             s.Source.loop = s.Loop;
         }
+        Play("Theme");
     }
 
     public void Play(string name)
@@ -45,4 +47,15 @@ public class AudioManager : MonoBehaviour
         s.Source.Stop();
     }
 
+    public void SetVolume(string name, float volume)
+    {
+        Sound s = Array.Find(sounds, sound => sound.Name == name);
+        if (s == null)
+        {
+            Debug.LogWarning("Sound " + name + " not found!");
+            return;
+        }
+        s.Volume = volume;
+        s.Source.volume = volume;
+    }
 }
