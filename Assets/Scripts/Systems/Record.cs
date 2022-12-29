@@ -13,6 +13,6 @@ public class Record
     {
         int minutes = (int)Mathf.Floor(time) / 60;
         int seconds = (int)Mathf.Floor(time) % 60;
-        return minutes + ":" + seconds;
+        return minutes + ":" + (seconds < 10 ? "0" + seconds : seconds);
     }
 }
