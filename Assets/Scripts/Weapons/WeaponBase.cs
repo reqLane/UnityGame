@@ -32,8 +32,25 @@ public class WeaponBase : MonoBehaviour
                 player.weapon.transform.parent = player.transform;
                 player.weapon.transform.position = new Vector3(player.transform.position.x, player.transform.position.y, player.transform.position.z);
                 isCurrent = true;
+                GameManager.Instance.AudioManager.Play("PickupGun");
                 StartCoroutine(player.waitForChangeWeapon());
             }
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Player")
+        {
+            GameManager.Instance.UiManager.ShowHint("Pick up (E)");
+        }
+    }
+
+    private void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.tag == "Player")
+        {
+            GameManager.Instance.UiManager.ShowHint("");
         }
     }
 }

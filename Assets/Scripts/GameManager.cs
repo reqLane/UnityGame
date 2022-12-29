@@ -11,6 +11,8 @@ public class GameManager : Singleton<GameManager>
     private BattleManager battleManager;
     [SerializeField]
     private AudioManager audioManager;
+    [SerializeField]
+    private UIManager uiManager;
 
     private Player player;
 
@@ -18,4 +20,5 @@ public class GameManager : Singleton<GameManager>
     public LevelManager LevelManager { get => levelManager; set => levelManager = value; }
     public BattleManager BattleManager { get => battleManager; set => battleManager = value; }
     public AudioManager AudioManager { get => audioManager; set => audioManager = value; }
+    public UIManager UiManager { get => uiManager; set => uiManager = value; }
 }

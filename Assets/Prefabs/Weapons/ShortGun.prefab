@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 446270411532063625}
   - component: {fileID: 5756296778545439887}
   - component: {fileID: 7546542148247215569}
+  - component: {fileID: 333513044786204182}
   m_Layer: 13
   m_Name: ShortGun
   m_TagString: Untagged
@@ -102,7 +103,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isCurrent: 0
   damage: 3
-  prefab: {fileID: 1417422361205402188}
   projectilePrefab: {fileID: 3313771074988174925, guid: c76c5d299acac944f87594ead7c59be0, type: 3}
   muzzle: {fileID: 5171955744159991562}
 --- !u!95 &7546542148247215569
@@ -125,6 +125,32 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!61 &333513044786204182
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1417422361205402188}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.4556052, y: 0.025064051}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.4, y: 0.5}
+    oldSize: {x: 5.12, y: 5.12}
+    newSize: {x: 5.1250052, y: 5.12}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 2.6010542, y: 1.0345455}
+  m_EdgeRadius: 0
 --- !u!1 &4991819446378192663
 GameObject:
   m_ObjectHideFlags: 0

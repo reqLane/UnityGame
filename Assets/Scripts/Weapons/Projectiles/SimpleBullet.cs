@@ -27,8 +27,7 @@ public class SimpleBullet : ProjectileBase
     // Update is called once per frame
     protected void Update()
     {
-        //transform.position += direction*speed;
-        transform.position += direction*speed;
+        transform.position += direction*speed*Time.deltaTime;
     }
 
     protected private void OnCollisionEnter2D(Collision2D collision)

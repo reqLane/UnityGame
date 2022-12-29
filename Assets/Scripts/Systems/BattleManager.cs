@@ -34,7 +34,6 @@ public class BattleManager : MonoBehaviour
     public void OnEnemyDeath()
     {
         numOfEnemies--;
-        Debug.Log(numOfEnemies);
         if (numOfEnemies <= 0)
         {
             StartCoroutine(StartNextWaveWithDelay());

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Player : MonoBehaviour
 {
@@ -107,10 +108,16 @@ public class Player : MonoBehaviour
 
         StartCoroutine(makeInvincible(1f));
 
-        StatsSO.HP -= damage;
+        if (SceneManager.GetActiveScene().name != "Intro")
+        {
+            StatsSO.HP -= damage;
+        }
         if(StatsSO.HP <= 0)
         {
-            Debug.Log("DEATH");
+            StatsSO.HP = StatsSO.MaxHp;
+            GameManager.Instance.AudioManager.Stop("Fighting");
+            GameManager.Instance.AudioManager.SetVolume("Theme", .2f);
+            SceneManager.LoadScene("GameHub");
         }
     }
 
