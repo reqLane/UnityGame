@@ -13,7 +13,7 @@ public class RecordLabel : MonoBehaviour
     private void Awake()
     {
         label = GetComponent<TextMeshPro>();
-        if(level != -1)
+        if(level != -1 && GameManager.Instance.RecordsManager.RecordsCollection.records.Length >= level)
         {
             label.text = "Record " + GameManager.Instance.RecordsManager.RecordsCollection.records[level - 1];
         }

@@ -23,11 +23,14 @@ public class RecordsManager : MonoBehaviour
         CurrentLevel = -1;
         startTime = -1;
         dataPath = Application.persistentDataPath + "/" + fileName;
-        recordsCollection = new RecordsCollection() { records = new Record[0] };
-        using (StreamWriter stream = new StreamWriter(dataPath))
+        if(!File.Exists(dataPath))
         {
-            string json = JsonUtility.ToJson(RecordsCollection);
-            stream.Write(json);
+            recordsCollection = new RecordsCollection() { records = new Record[0] };
+            using (StreamWriter stream = new StreamWriter(dataPath))
+            {
+                string json = JsonUtility.ToJson(RecordsCollection);
+                stream.Write(json);
+            }
         }
         LoadRecords();
     }
