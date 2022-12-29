@@ -117,6 +117,7 @@ public class Player : MonoBehaviour
             StatsSO.HP = StatsSO.MaxHp;
             GameManager.Instance.AudioManager.Stop("Fighting");
             GameManager.Instance.AudioManager.SetVolume("Theme", .2f);
+            GameManager.Instance.RecordsManager.CurrentLevel = -1;
             SceneManager.LoadScene("GameHub");
         }
     }

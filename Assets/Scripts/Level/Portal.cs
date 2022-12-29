@@ -8,6 +8,8 @@ public class Portal : MonoBehaviour
 {
     [SerializeField]
     private string sceneDestination;
+    [SerializeField]
+    private int level;
 
     private bool canTeleport;
 
@@ -46,6 +48,19 @@ public class Portal : MonoBehaviour
         if(sceneDestination == "GameHub")
         {
             GameManager.Instance.Player.StatsSO.HP = GameManager.Instance.Player.StatsSO.MaxHp;
+            if(GameManager.Instance.RecordsManager.CurrentLevel != -1 
+                && (GameManager.Instance.RecordsManager.RecordsCollection.records.Length < GameManager.Instance.RecordsManager.CurrentLevel
+                || Time.time - GameManager.Instance.RecordsManager.StartTime < GameManager.Instance.RecordsManager.RecordsCollection.records[GameManager.Instance.RecordsManager.CurrentLevel - 1].time))
+            {
+                GameManager.Instance.RecordsManager.SaveRecord(GameManager.Instance.RecordsManager.CurrentLevel, Time.time - GameManager.Instance.RecordsManager.StartTime);
+            }
+            GameManager.Instance.RecordsManager.CurrentLevel = -1;
+        }
+
+        if(level != -1)
+        {
+            GameManager.Instance.RecordsManager.CurrentLevel = level;
+            GameManager.Instance.RecordsManager.StartTime = Time.time;
         }
         GameManager.Instance.UiManager.ShowHint("");
         SceneManager.LoadScene(sceneDestination);

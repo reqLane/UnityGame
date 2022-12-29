@@ -47,6 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneDestination: 
+  level: -1
 --- !u!212 &4151366411869921662
 SpriteRenderer:
   m_ObjectHideFlags: 0
